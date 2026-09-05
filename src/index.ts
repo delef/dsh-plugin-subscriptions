@@ -201,12 +201,15 @@ export const Config: z<Config> = z.object({
 })
 
 /** Built-in catalogs used when the config does not override a provider's models. */
+export const DEFAULT_CODEX_MODELS: ModelEntry[] = [
+  { id: 'gpt-5.1-codex', name: 'GPT-5.1 Codex' },
+  { id: 'gpt-5.1-codex-mini', name: 'GPT-5.1 Codex Mini' },
+  { id: 'gpt-5.1', name: 'GPT-5.1' },
+  { id: 'gpt-6-astra', name: 'GPT-6 Astra' },
+]
+
 const DEFAULT_MODELS: Record<ProviderId, ModelEntry[]> = {
-  codex: [
-    { id: 'gpt-5.1-codex', name: 'GPT-5.1 Codex' },
-    { id: 'gpt-5.1-codex-mini', name: 'GPT-5.1 Codex Mini' },
-    { id: 'gpt-5.1', name: 'GPT-5.1' },
-  ],
+  codex: DEFAULT_CODEX_MODELS,
   claude: [
     { id: 'claude-opus-5', name: 'Claude Opus 5', maxTokens: 128_000, contextWindow: 1_000_000 },
     { id: 'claude-sonnet-5', name: 'Claude Sonnet 5', maxTokens: 128_000, contextWindow: 1_000_000 },

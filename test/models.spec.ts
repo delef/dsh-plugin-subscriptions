@@ -19,10 +19,15 @@ import { AccountTokenManager } from '../src/providers/accounts.js'
 import type { CatalogPersistence, CatalogSnapshot, FetchFn } from '../src/providers/common.js'
 import type { ClaudeSession, CodexSession, CopilotSession, GrokSession } from '../src/auth/store.js'
 import { withTimeout } from '../src/providers/common.js'
+import { DEFAULT_CODEX_MODELS } from '../src/index.js'
 
 const STATIC_CODEX = [{ id: 'gpt-5.1-codex', name: 'GPT-5.1 Codex' }]
 const STATIC_CLAUDE = [{ id: 'claude-opus-4-5', name: 'Claude Opus 4.5' }]
 const STATIC_GROK = [{ id: 'grok-4', name: 'Grok 4' }]
+
+test('the built-in Codex catalog includes GPT-6 Astra', () => {
+  assert.deepEqual(DEFAULT_CODEX_MODELS.at(-1), { id: 'gpt-6-astra', name: 'GPT-6 Astra' })
+})
 
 const codexSession: CodexSession = {
   accessToken: 'at',
